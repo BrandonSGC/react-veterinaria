@@ -1,6 +1,7 @@
 import { Paciente } from "./";
 
 export const ListadoPacientes = ({pacientes}) => {
+  console.log(pacientes);
   
   return (
     <section className="pr-2">
@@ -10,6 +11,8 @@ export const ListadoPacientes = ({pacientes}) => {
         Administra tus{" "}
         <span className="font-bold text-indigo-600">Pacientes y Citas</span>
       </p>
+
+      {(pacientes.length === 0) && <p className="text-center">No hay pacientes aún...</p>}
 
       {/* // TODO: Customize scrollbar styles. */}
       <div className="flex flex-col gap-2 md:h-[540px] md:overflow-y-scroll rounded-md md:pr-2">

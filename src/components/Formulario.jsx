@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
+import { Alert } from "./";
 
 export const Formulario = ({ pacientes, setPacientes }) => {
   const { formState, onInputChange, onResetForm } = useForm({
@@ -10,7 +11,13 @@ export const Formulario = ({ pacientes, setPacientes }) => {
     alta: "",
     sintomas: "",
   });
-  
+
+  const [alert, setAlert] = useState({ 
+    show: false, 
+    type: "", 
+    text: "" 
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -22,16 +29,23 @@ export const Formulario = ({ pacientes, setPacientes }) => {
       formState.alta === "" ||
       formState.sintomas === ""
     ) {
-      // TODO: Show alert
-      console.log("Llene todos los campos");
+      setAlert({
+        show: true,
+        type: "error",
+        text: "Debe de llenar todos los campos",
+      });
       return;
     }
 
-    // Save data.
-    setPacientes([...pacientes, {...formState, id: Date.now()}]);
+    setPacientes([...pacientes, { ...formState, id: Date.now() }]);
 
-    // Reset form
     onResetForm();
+
+    setAlert({
+      show: true,
+      type: "success",
+      text: "Paciente añadido correctamente",
+    });
   };
 
   useEffect(() => {
@@ -139,6 +153,9 @@ export const Formulario = ({ pacientes, setPacientes }) => {
             value={formState.sintomas}
           ></textarea>
         </div>
+
+        <Alert alert={alert} />
+
         <input
           className="w-full p-3 font-bold text-white uppercase duration-300 bg-indigo-600 cursor-pointer hover:bg-indigo-700"
           type="submit"
