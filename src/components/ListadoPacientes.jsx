@@ -11,11 +11,11 @@ export const ListadoPacientes = ({pacientes}) => {
         <span className="font-bold text-indigo-600">Pacientes y Citas</span>
       </p>
 
-      // TODO: Customize scrollbar styles.
+      {/* // TODO: Customize scrollbar styles. */}
       <div className="flex flex-col gap-2 md:h-[540px] md:overflow-y-scroll rounded-md md:pr-2">
-        // TODO: Add unique id to every patient. 
-        {pacientes?.map((paciente, i) => (
-          <Paciente key={i} paciente={{...paciente}} />
+        {/* // TODO: Add unique id to every patient.  */}
+        {pacientes?.map((paciente) => (
+          <Paciente key={paciente.id} paciente={{...paciente}} />
         ))}
       </div>
     </section>

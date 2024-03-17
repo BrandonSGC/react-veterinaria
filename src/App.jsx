@@ -6,16 +6,17 @@ function App() {
     JSON.parse(localStorage.getItem("pacientes")) || []
   );
 
-  console.log(pacientes);
-
   return (
-    <div className="container px-2 mx-auto mt-20 md:px-0">
-      <Header />
-      <div className="grid gap-12 mt-10 md:gap-4 md:grid-cols-2">
-        <Formulario pacientes={pacientes} setPacientes={setPacientes} />
-        <ListadoPacientes pacientes={pacientes} />
+    <>
+      <div className="container px-2 mx-auto mt-20 md:px-0">
+        <Header />
+        <div className="grid gap-12 mt-10 md:gap-4 md:grid-cols-2">
+          <Formulario pacientes={pacientes} setPacientes={setPacientes} />
+          <ListadoPacientes pacientes={pacientes} />
+        </div>
       </div>
-    </div>
+
+    </>
   );
 }
 

@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import { useForm } from "../hooks/useForm";
 
-export const Formulario = ({pacientes, setPacientes}) => {
-  const {formState, onInputChange, onResetForm} = useForm({
+export const Formulario = ({ pacientes, setPacientes }) => {
+  const { formState, onInputChange, onResetForm } = useForm({
+    id: "",
     mascota: "",
     propietario: "",
     email: "",
     alta: "",
     sintomas: "",
   });
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -27,7 +28,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
     }
 
     // Save data.
-    setPacientes([...pacientes, formState]);
+    setPacientes([...pacientes, {...formState, id: Date.now()}]);
 
     // Reset form
     onResetForm();
@@ -35,7 +36,7 @@ export const Formulario = ({pacientes, setPacientes}) => {
 
   useEffect(() => {
     // Save data in localstorage
-    localStorage.setItem('pacientes', JSON.stringify(pacientes));
+    localStorage.setItem("pacientes", JSON.stringify(pacientes));
   }, [pacientes]);
 
   return (
