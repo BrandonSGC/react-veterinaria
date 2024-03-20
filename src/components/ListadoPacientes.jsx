@@ -1,7 +1,7 @@
 import { Paciente } from "./";
 
-export const ListadoPacientes = ({pacientes}) => {
-  console.log(pacientes);
+export const ListadoPacientes = ({pacientes, setPacientes}) => {
+  //console.log(pacientes);
   
   return (
     <section className="pr-2">
@@ -18,7 +18,7 @@ export const ListadoPacientes = ({pacientes}) => {
       <div className="flex flex-col gap-2 md:h-[540px] md:overflow-y-scroll rounded-md md:pr-2">
         {/* // TODO: Add unique id to every patient.  */}
         {pacientes?.map((paciente) => (
-          <Paciente key={paciente.id} paciente={{...paciente}} />
+          <Paciente key={paciente.id} paciente={{...paciente}} pacientes={pacientes} setPacientes={setPacientes}/>
         ))}
       </div>
     </section>

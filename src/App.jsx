@@ -12,7 +12,7 @@ function App() {
         <Header />
         <div className="grid gap-12 mt-10 md:gap-4 md:grid-cols-2">
           <Formulario pacientes={pacientes} setPacientes={setPacientes} />
-          <ListadoPacientes pacientes={pacientes} />
+          <ListadoPacientes pacientes={pacientes} setPacientes={setPacientes} />
         </div>
       </div>
 

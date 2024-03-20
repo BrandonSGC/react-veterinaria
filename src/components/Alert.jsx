@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const Alert = ({ alert }) => {
+  // TODO: Fix alert... After show once does not appaer again on submit data...
   const { show, type, text } = alert;
 
   const [isVisible, setIsVisible] = useState(show);

@@ -1,5 +1,9 @@
-export const Paciente = ({paciente}) => {
-  const {mascota, propietario, email, alta, sintomas} = paciente;
+export const Paciente = ({paciente, pacientes, setPacientes}) => {
+  const {id, mascota, propietario, email, alta, sintomas} = paciente;
+
+  const onDelete = (e) => {
+    setPacientes(pacientes.filter(element => element.id !== id));
+  }
   
   return (
     <div className="px-5 py-10 bg-white rounded-lg shadow-md">
@@ -28,7 +32,7 @@ export const Paciente = ({paciente}) => {
         <button className="px-6 py-1 font-bold text-white uppercase duration-300 bg-indigo-600 rounded-md hover:bg-indigo-700">
           Editar
         </button>
-        <button className="px-6 py-1 font-bold text-white uppercase duration-300 bg-red-600 rounded-md hover:bg-red-700">
+        <button onClick={onDelete} className="px-6 py-1 font-bold text-white uppercase duration-300 bg-red-600 rounded-md hover:bg-red-700">
           Eliminar
         </button>
       </div>
